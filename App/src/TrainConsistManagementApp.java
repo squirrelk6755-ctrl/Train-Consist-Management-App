@@ -1,33 +1,29 @@
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
-public class TrainConsistManagementApp {
+public class TrainConsistManagementApp{
 
     public static void main(String[] args) {
 
         System.out.println("========================================");
-        System.out.println(" UC5 - Preserve Insertion Order of Bogies ");
+        System.out.println(" UC6 - Map Bogie to Capacity (HashMap) ");
         System.out.println("========================================\n");
 
-        // Create a LinkedHashSet to maintain insertion order with uniqueness
-        Set<String> trainFormation = new LinkedHashSet<>();
+        // HashMap stores data in key -> value format
+        Map<String, Integer> capacityMap = new HashMap<>();
 
-        // Add bogies in sequence
-        trainFormation.add("Engine");
-        trainFormation.add("Sleeper");
-        trainFormation.add("Cargo");
-        trainFormation.add("Guard");
+        // ---- Insert bogie capacities ----
+        capacityMap.put("Sleeper", 72);
+        capacityMap.put("AC Chair", 56);
+        capacityMap.put("First Class", 24);
+        capacityMap.put("Cargo", 120);
 
-        // Attempt duplicate insertion - will be ignored automatically
-        trainFormation.add("Sleeper"); // Duplicate entry
+        // ---- Display bogie capacity details ----
+        System.out.println("Bogie Capacity Details:");
+        for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
 
-        System.out.println("Train Formation (Insertion Order Preserved):");
-        System.out.println(trainFormation);
-
-        System.out.println("\nNote:");
-        System.out.println("Duplicate 'Sleeper' was ignored by LinkedHashSet.");
-        System.out.println("Insertion order is maintained unlike HashSet.");
-
-        System.out.println("\nUC5 ordered uniqueness validation completed...");
+        System.out.println("\nUC6 bogie-capacity mapping completed...");
     }
 }
